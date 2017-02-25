@@ -14,7 +14,7 @@ markdown_extensions:
      permalink: '#'
 pages:
 - Home: 'index.md'
-- Whats new in 3.0.1: 'operation/intro.md'
+- Whats new in 3.x: 'operation/intro.md'
 - Installation Guide:
         - 'Preparing VM': 'installation-guide/index.md'
         - 'Install Gluu Server': 'installation-guide/install.md'
