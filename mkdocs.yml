@@ -3,10 +3,10 @@ site_description: Documenation for Gluu Server
 site_favicon: 'favicon.ico'
 copyright: Copyright &copy; 2016, Gluu, Inc.
 docs_dir: source
-repo_url: https://github.com/GluuFederation/docs
+repo_url: https://github.com/GluuFederation/docs-3.0.1
 theme_dir: theme/material
 extra:
-    version: '3.0.0'
+    version: '3.0.1'
     logo: 'gluu.jpg'
 markdown_extensions:
 - admonition
@@ -14,7 +14,7 @@ markdown_extensions:
      permalink: '#'
 pages:
 - Home: 'index.md'
-- Whats new in 3.0: 'operation/intro.md'
+- Whats new in 3.0.1: 'operation/intro.md'
 - Installation Guide:
         - 'Preparing VM': 'installation-guide/index.md'
         - 'Install Gluu Server': 'installation-guide/install.md'
