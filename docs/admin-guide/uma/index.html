@@ -254,8 +254,8 @@
       
   <li class="md-nav__item">
     
-      <a href="../../operation/intro/" title="Whats new in 3.0.1" class="md-nav__link">
-        Whats new in 3.0.1
+      <a href="../../operation/intro/" title="Whats new in 3.x" class="md-nav__link">
+        Whats new in 3.x
       </a>
     
   </li>
@@ -614,6 +614,26 @@
     Overview
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#authorization-policy-expression-language" title="Authorization Policy Expression Language" class="md-nav__link">
+    Authorization Policy Expression Language
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authentication-agnostic" title="Authentication-Agnostic" class="md-nav__link">
+    Authentication-Agnostic
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -715,15 +735,26 @@
         
           
           
+  <li class="md-nav__item">
+    
+      <a href="../../integration/" title="Introduction" class="md-nav__link">
+        Introduction
+      </a>
+    
+  </li>
+
+        
+          
+          
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-1" type="checkbox" id="nav-5-1">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-2" type="checkbox" id="nav-5-2">
     
-    <label class="md-nav__link" for="nav-5-1">
+    <label class="md-nav__link" for="nav-5-2">
       Client SDKs
     </label>
     <nav class="md-nav" data-md-component="collapsible">
-      <label class="md-nav__title" for="nav-5-1">
+      <label class="md-nav__title" for="nav-5-2">
         Client SDKs
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -760,13 +791,13 @@
           
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-2" type="checkbox" id="nav-5-2">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-3" type="checkbox" id="nav-5-3">
     
-    <label class="md-nav__link" for="nav-5-2">
+    <label class="md-nav__link" for="nav-5-3">
       Web Server Integrations
     </label>
     <nav class="md-nav" data-md-component="collapsible">
-      <label class="md-nav__title" for="nav-5-2">
+      <label class="md-nav__title" for="nav-5-3">
         Web Server Integrations
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -803,13 +834,13 @@
           
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-3" type="checkbox" id="nav-5-3">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-4" type="checkbox" id="nav-5-4">
     
-    <label class="md-nav__link" for="nav-5-3">
+    <label class="md-nav__link" for="nav-5-4">
       SaaS Integrations
     </label>
     <nav class="md-nav" data-md-component="collapsible">
-      <label class="md-nav__title" for="nav-5-3">
+      <label class="md-nav__title" for="nav-5-4">
         SaaS Integrations
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1196,6 +1227,26 @@
     Overview
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#authorization-policy-expression-language" title="Authorization Policy Expression Language" class="md-nav__link">
+    Authorization Policy Expression Language
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authentication-agnostic" title="Authentication-Agnostic" class="md-nav__link">
+    Authentication-Agnostic
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1263,7 +1314,14 @@
                 <h1 id="uma">UMA<a class="headerlink" href="#uma" title="Permanent link">#</a></h1>
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">#</a></h2>
 <p>As a profile of OAuth 2.0 that is complementary to OpenID Connect, UMA defines RESTful, JSON-based, standardized flows and constructs for coordinating the protection of any API or web resource in a way that will be familiar to any developer already acquainted with OAuth.</p>
-<p>UMA defines interfaces between authorization servers and resource servers that, by default, enable centralized policy decision-making for improved service delivery, auditing, policy administration, and accountability, even in a very loosely coupled "public API" environment. Custom profiles enable flexibility to move the decision-making line outward to distributed applications, to account for local preferences in API ecosystems. UMA does not standardize a policy expression language, enabling flexibility in policy expression and evaluation through XACML, other declarative policy languages, or procedural code as warranted by conditions. It also has a fluid way to handle federated authorization policy.</p>
+<p>UMA defines interfaces between authorization servers (AS) and resource servers (RS) that, by default, enable centralized policy decision-making for improved service delivery, auditing, policy administration, and accountability, even in a very loosely coupled "public API" environment. Custom profiles enable flexibility to move the decision-making line outward to distributed applications, to account for local preferences in API ecosystems. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Gluu Server functions as an UMA AS and provides an interface for scripting unique policies for access management. To secure your application with UMA RS code, we <strong>strongly recommend</strong> using Gluu’s client software, <a href="http://oxd.gluu.org">oxd</a>.</p>
+</div>
+<h3 id="authorization-policy-expression-language">Authorization Policy Expression Language<a class="headerlink" href="#authorization-policy-expression-language" title="Permanent link">#</a></h3>
+<p>UMA does not standardize a policy expression language, enabling flexibility in policy expression and evaluation through XACML, other declarative policy languages, or procedural code as warranted by conditions. It also has a fluid way to handle federated authorization policy.</p>
+<h3 id="authentication-agnostic">Authentication-Agnostic<a class="headerlink" href="#authentication-agnostic" title="Permanent link">#</a></h3>
 <p>UMA inherits authentication agnosticism from OAuth. It concentrates on authorization, not on authentication. 
 It has been profiled to work with OpenID Connect to gather identity claims from whoever is attempting access, 
 and enables true claims-based authorization (with simple group- or role-based policies a natural subset). 

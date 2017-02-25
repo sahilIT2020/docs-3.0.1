@@ -1,53 +1,30 @@
-# Gluu CE Integration Guide Introduction
+# Gluu Server Integration Guide
+The integration guide will help you understand how to integrate custom developed, open source, off-the-shelf, and SaaS web and mobile applications with your Gluu Server access management platform.  
 
-The Gluu Server is a container distribution composed of software written by Gluu 
-and incorporated from other open source projects. Gluu projects are frequently 
-prefixed with our open source handle: ox (e.g. oxAuth, oxTrust). 
+## SaaS Applications 
+Integrating SaaS applications with your Gluu Server is fairly straightforward. Presumably the app already supports SAML or OpenID Connect and provides documentation for configuring your IDP (Gluu Server) for SSO. We have documentation for configuring the Gluu Server for SSO to a few popular SaaS applications like Google and Salesforce. If we do not have a guide for configuring the app in question, simply perform a Goolge search for `{SaaS Provider} SAML` or `{SaaS Provider} OpenID Connect`. Follow the provider's instructions for configuring your IDP for SSO and test (and re-test!). 
 
-![Gluu Server](../img/integration/gluu_server_diagram.png)
+!!! Note
+    If the SaaS application in question does not already support SAML or OpenID Connect, our best advice is find a similar product or provider that does integrate with your standards-based security infrastructure. 
 
-The Gluu Server can include multiple components. Each one fulfills a different requirement, 
-and can be included or excluded in individual deployments based on an organization’s unique requirements.
+## Non-SaaS Applications
+Two design patterns have emerged for securing custom developed, open source, and off-the-shelf applications:
 
-## Gluu Components for Integrating Applications
+1. [Use a web server filter / reverse proxy](#web-server-filter--reverse-proxy); or,
+2. [Call the federation APIs directly](#client-sdks).
 
-- Shibboleth is one of the most dependable open source [SAML](http://www.gluu.org/resources/documents/standards/saml-2-0/)
-  single sign-on servers available and is in production at more than 5,000 organization’s worldwide.
-- Asimba SAML Proxy enables an organization to consolidate inbound SAML authentication from 
-  the IDPs of partners to a website or app.
-- oxAuth is Gluu’s inter-op leading [OpenID Connect IDP](http://www.gluu.org/resources/documents/standards/openid-connect/) 
-  and industry leading [UMA Authorization Server (AS)](http://www.gluu.org/resources/documents/standards/uma/).
-- oxTrust is the server administration application. In oxTrust, 
-  the server admin can manage and configure SAML & OpenID Connect single sign-on, 
-  and script policies to enforce custom authentication workflows and control access 
-  to web resources like folders and API’s.
+In the Web Server and Client SDKs sections of the integration guide we document how to use supported software to implement each approach, respectively. Which approach to pick depends on a trade-off between easier devops (option 1), and how deeply you want to integrate centralized security policies into your application (option 2).
 
-SaaS, custom, open source and commercial software can be made more 
-secure by leveraging a central authentication and authorization service. 
-Because there are so many different kinds of apps, there is no way to “top down” 
-implement proprietary security mechanisms. This is why open standards are so important for IAM.
+### Web Server Filter / Reverse Proxy
+The most commonly used approach for enterprise SSO has been to use a Web Server Filter / Reverse Proxy to enforce the presence of a token in an HTTP Request. If no token is present, the Web server may re-direct the person, or return a meaningful code or message to the application. The guides in the Web Server Integrations section of the docs include instructions for using Apache and Nginx software we have confirmed to work against the Gluu Server. 
 
-The Gluu Server is like a router for authentication and authorization. 
-It speaks multiple dialects of SSO, and can help an organization manage both inbound and outbound 
-authentication and authorization requirements. The Gluu Server is flexible enough to enforce any 
-policy you can script and can be scaled to meet the needs of organizations of all sizes.
+### Client SDKs
+The other integration option is to call the federation APIs directly in your application. In general, calling the API’s directly will enable the application to make “smarter” decisions, which can have a positive impact on usability and ultimately result in better security. Libraries exist for SAML, OpenID Connect and UMA in many languages. However, due to the complexity associated with properly implementing the APIs, we recommend using one of the supported Client SDKs covered in our documentation to help with the heavy lifting. 
 
-### Integration Documentation
-This section of the document discuss more on the integrations using above mentioned 
-methods and protocols to achieve required functinality without comprising security and cost.
-
-This guide is classified into 3 parts of integration
-
-- Client SDKs
-    - Client SDKs discussed on the OXD OAUTH product developed by Gluu server, 
-      used as a plugin to connect to various systems.
-- Web Server Integrations
-    - Web Server integration discusses on the methods or protocols that 
-      can used to integrate applications with Gluu CE Server, such as, shibboleth2.0, mod_auth_oidc
-- SaaS Integrations
-    - Saas Integrations are those, where social or cloud based applications are integrated using Gluu CE server
-      incorporating Gluu internal mechanism or custom scripts.
-
-Each section discusses more on in detail about each of the integration methods used in Gluu CE Server.
-
+!!! Note
+    Given ongoing maintenance considerations, and the security implications of getting the implementation correct, we **strongly encourage** you to use our commercial OAuth 2.0 client software, [oxd](./oauth2.md/), to secure web applications. 
+    
+## Mobile Apps    
+To integrate custom developed and open source mobile applications with your Gluu Server access management platform, use the AppAuth OpenID Connect libraries for iOS and Android written by Google.
+    
 

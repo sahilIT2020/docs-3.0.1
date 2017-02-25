@@ -48,7 +48,7 @@ pages:
         - 'SCIM protected by UMA' : 'admin-guide/scim-uma.md'
         - 'Certificate Management' : 'admin-guide/certificate.md'
 - Integration Guide:
-#        - 'Introduction': 'integration/index.md'
+        - 'Introduction': 'integration/index.md'
         - 'Client SDKs':
             - 'oxd OAuth2': 'integration/oauth2.md'
             - 'OAuth2.0 js Implicit Flow': 'integration/oauth-js-implicit.md'
