@@ -1,4 +1,4 @@
-# Manual upgrade from 2.4.4.2 or 2.4.4.3 to 3.0.0 with OpenDJ
+# Manual upgrade from 2.4.4.2 or 2.4.4.3 to 3.0.1 with OpenDJ
 
 ## Overview
 This guide explains how to upgrade the Gluu Server 2.4.4.2 (SP 2) or 2.4.4.3 (SP 3) to 3.0.1
@@ -29,21 +29,21 @@ service gluu-server-2.4.4.2 stop
 > - Disable 'gluuserver-2.4.4.2' from startup: `chkconfig gluu-server-2.4.4.2 off`
 > - Check the status of service in init: `chkconfig --list | grep gluu-server-2.4.4.2`
 
-5\. Install 3.0.0 rpm/deb, do not run setup script. 
+5\. Install 3.0.1 rpm/deb, do not run setup script. 
 
-6\. Backup OpenDJ, ox-ldap.properties, salt from 2.4.4 SP2 and copy it into 3.0.0
+6\. Backup OpenDJ, ox-ldap.properties, salt from 2.4.4 SP2 and copy it into 3.0.1
 ```
 cd /opt/gluu-server-2.4.4.2/opt
 tar -czf opendj.tar.gz opendj
-cp opendj.tar.gz /opt/gluu-server-3.0.0/opt/
+cp opendj.tar.gz /opt/gluu-server-3.0.1/opt/
 
-cp /opt/gluu-server-2.4.4.2/opt/apache-tomcat-7.0.65/conf/ox-ldap.properties /opt/gluu-server-3.0.0/tmp
-cp /opt/gluu-server-2.4.4.2/opt/apache-tomcat-7.0.65/conf/salt /opt/gluu-server-3.0.0/tmp
+cp /opt/gluu-server-2.4.4.2/opt/apache-tomcat-7.0.65/conf/ox-ldap.properties /opt/gluu-server-3.0.1/tmp
+cp /opt/gluu-server-2.4.4.2/opt/apache-tomcat-7.0.65/conf/salt /opt/gluu-server-3.0.1/tmp
 ```
-7\. Log into CE 3.0.0 and run setup script
+7\. Log into CE 3.0.1 and run setup script
 ```
-service gluu-server-3.0.0 start
-service gluu-server-3.0.0 login
+service gluu-server-3.0.1 start
+service gluu-server-3.0.1 login
 cd /install/community-edition-setup/
 ./setup.py
 ```
@@ -104,7 +104,7 @@ export OPENDJ_JAVA_HOME=/opt/jre; /opt/opendj/bin/create-rc-script --outputFile 
 ```
 cp -f /install/community-edition-setup/static/opendj/deprecated/101-ox.ldif /opt/opendj/config/schema/
 ```
-15\. In 3.0.0 user custom attributes objectClass is `gluuCustomPerson`. It's defined in `/opt/opendj/config/schema/77-customAttributes.ldif` 
+15\. In 3.0.1 user custom attributes objectClass is `gluuCustomPerson`. It's defined in `/opt/opendj/config/schema/77-customAttributes.ldif` 
 
 We need to add into it definition custom attributes from 2.4.4 SP2 `/opt/opendj/config/schema/100-user.ldif`. Old custom attributes `objectClass` is based on `orgInum`. Example: `ox-6657268F7461C8CE000150DA8011-oid`
 
@@ -118,8 +118,8 @@ service opendj start
 18\. Restore ox-ldap.properties and salt from CE 2.4.4 SP2
 ```
 cd /etc/gluu/conf
-mv ox-ldap.properties ox-ldap.properties.3.0.0
-mv salt salt.3.0.0
+mv ox-ldap.properties ox-ldap.properties.3.0.1
+mv salt salt.3.0.1
 mv /tmp/ox-ldap.properties .
 mv /tmp/salt .
 chown -R root:gluu /etc/gluu/conf
@@ -136,14 +136,14 @@ service identity start
 21\. Update oxTrust JSON configuration
  - We need to update `personObjectClassTypes`, `personObjectClassDisplayNames` and  `personCustomObjectClass`.
  
-   In  3.0.0 these properties have next default values:
+   In  3.0.1 these properties have next default values:
    ```
    personObjectClassTypes = gluuCustomPerson, gluuPerson, eduPerson
    personObjectClassDisplayNames = gluuCustomPerson, gluuPerson, eduPerson
    personCustomObjectClass = gluuCustomPerson
    ```
  - We need to update `ldifStore`, `velocityLog`.
-   In  3.0.0 these properties have next default values:
+   In  3.0.1 these properties have next default values:
    `ldifStore` = `/var/ox/identity/removed`
    `velocityLog` = `/opt/gluu/jetty/identity/logs/velocity.log`
    
@@ -165,5 +165,5 @@ service identity start
 ## Notes
 
 1\. If in 2.4.4 SP2 environment SCIM was enabled we need to do the following:
- - Fill new properties: `scimUmaClientId`, `scimUmaClientKeyId`, `scimUmaResourceId`, `scimUmaScope`, `scimUmaClientKeyStoreFile`, `scimUmaClientKeyStorePassword` -- These properties have the same values as before, but in 3.0.0 we added prefix "scim" to all of them.
- - Copy `/etc/certs/scim-rs.jks` from 2.4.4 SP2 into 3.0.0
+ - Fill new properties: `scimUmaClientId`, `scimUmaClientKeyId`, `scimUmaResourceId`, `scimUmaScope`, `scimUmaClientKeyStoreFile`, `scimUmaClientKeyStorePassword` -- These properties have the same values as before, but in 3.0.1 we added prefix "scim" to all of them.
+ - Copy `/etc/certs/scim-rs.jks` from 2.4.4 SP2 into 3.0.1
