@@ -40,14 +40,14 @@ Stop the current version of the gluu-server.
 # service gluu-server-2.4.x stop
 ```
 
-Review the [installation docs](../installation-guide/install.md) to install the Gluu Server using the package manager. Once the package manager has installed version `3.0.0`, then execute the following commands:
+Review the [installation docs](../installation-guide/install.md) to install the Gluu Server using the package manager. Once the package manager has installed version `3.0.1`, then execute the following commands:
 
 ```
-# cp -r /opt/gluu-server-2.4.x/root/backup_24/ /opt/gluu-server-3.0.0/root/
+# cp -r /opt/gluu-server-2.4.x/root/backup_24/ /opt/gluu-server-3.0.1/root/
 
-# service gluu-server-3.0.0 start
+# service gluu-server-3.0.1 start
 
-# service gluu-server-3.0.0 login
+# service gluu-server-3.0.1 login
 
 # cp backup_24/setup.properties /install/community-edition-setup/
 

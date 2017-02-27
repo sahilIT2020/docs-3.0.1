@@ -5,7 +5,7 @@
 
     a. Using below command
     
-     `# service gluu-server-3.0.0 login`
+     `# service gluu-server-3.0.1 login`
      
 3. To find oxTrust version
 

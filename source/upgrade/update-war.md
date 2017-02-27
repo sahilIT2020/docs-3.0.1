@@ -22,7 +22,7 @@ Shibboleth IDP or oxauth-rp.
 
 1. Login to chroot container 
 
-    `# service gluu-server-3.0.0 login`
+    `# service gluu-server-3.0.1 login`
     
 2. Stop the respective service. 
 

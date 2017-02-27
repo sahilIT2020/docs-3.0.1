@@ -26,13 +26,13 @@ We will be building latest branch
 
 # yum clean all 
 
-# yum install gluu-server-3.0.0 
+# yum install gluu-server-3.0.1 
 
-# /sbin/gluu-serverd-3.0.0 start 
+# /sbin/gluu-serverd-3.0.1 start 
 
-# /sbin/gluu-serverd-3.0.0 enable 
+# /sbin/gluu-serverd-3.0.1 enable 
 
-# /sbin/gluu-serverd-3.0.0 login 
+# /sbin/gluu-serverd-3.0.1 login 
 ```
 !!! Note: 
     This documentation is prepared based on CentOS, follow the appropriate installation guide based on your OS.
@@ -74,9 +74,9 @@ Now leave chroot
 # logout 
 ```
 
-root directory of gluu chroot jail is `/opt/gluu-server-3.0.0/` 
+root directory of gluu chroot jail is `/opt/gluu-server-3.0.1/` 
 
-download `/opt/gluu-server-3.0.0/root/configs.tgz` to your machine. 
+download `/opt/gluu-server-3.0.1/root/configs.tgz` to your machine. 
 
 ## Download Software
 Download below mentioned required softwares. And this assumes you're using Windows 64-bit operating sytsem. 

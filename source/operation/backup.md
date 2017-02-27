@@ -11,15 +11,15 @@ import scripts to back up ldif of the LDAP. -->
 ## Tarball Method
 
 1. Stop the server using below command
-	a. #service gluu-server-3.0.0 stop
+	a. #service gluu-server-3.0.1 stop
 2. use tar command to take a back up
-	b. # tar cvf gluu244-backup.tar /opt/gluu-server-3.0.0/
+	b. # tar cvf gluu244-backup.tar /opt/gluu-server-3.0.1/
 	
 <!--
 ## Script Method
 
 1. Login to Gluu chroot
-	a. # service gluu-server-3.0.0 login
+	a. # service gluu-server-3.0.1 login
 2. Fetch export script from Gluu 
 	b. wget https://raw.githubusercontent.com/GluuFederation/community-edition-setup/master/static/scripts/export24.py
 3. Change permission of the script
