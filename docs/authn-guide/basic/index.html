@@ -1226,7 +1226,8 @@
                 
                 <h1 id="authentication-against-ldap-aka-basic-internal">Authentication against LDAP (AKA “Basic”, “Internal”)<a class="headerlink" href="#authentication-against-ldap-aka-basic-internal" title="Permanent link">#</a></h1>
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">#</a></h2>
-<p>The <a href="../BasicExternalAuthenticator.py">Basic authentication script</a> is used to implement username / password authentication. Basic authentication relies on a successful LDAP BIND operation against an LDAP directory--either the local LDAP included in the Gluu Server, or a backend LDAP server like Active Directory that has been configured for use with the Gluu Server via <a href="../../admin-guide/user-group.md/#ldap-synchronization">Cache Refresh</a>. </p>
+<p>The <a href="https://raw.githubusercontent.com/GluuFederation/oxAuth/master/Server/integrations/basic/BasicExternalAuthenticator.py">Basic authentication script</a> 
+is used to implement username / password authentication. Basic authentication relies on a successful LDAP BIND operation against an LDAP directory--either the local LDAP included in the Gluu Server, or a backend LDAP server like Active Directory that has been configured for use with the Gluu Server via <a href="../../admin-guide/user-group.md/#ldap-synchronization">Cache Refresh</a>. </p>
 <h2 id="configuring-basic-authentication">Configuring Basic Authentication<a class="headerlink" href="#configuring-basic-authentication" title="Permanent link">#</a></h2>
 <p>Follow the steps below to configure the Basic authentication method:</p>
 <ol>
@@ -1332,7 +1333,7 @@ mappings for user attributes imported from a backend directory. Cache Refresh al
       <div class="md-footer-copyright">
         
           <div class="md-footer-copyright__highlight">
-            Copyright &copy; 2016, Gluu, Inc.
+            Copyright &copy; 2017, Gluu, Inc.
           </div>
         
         powered by
