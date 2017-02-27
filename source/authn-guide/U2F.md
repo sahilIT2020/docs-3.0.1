@@ -1,22 +1,21 @@
 # FIDO U2F
 
 ## Overview
-FIDO Universal 2nd Factor (U2F) is an open authentication standard that strengthens and simplifies two-factor authentication using specialized USB or NFC devices based on similar security technology found in smart cards. Learn more about the U2F standard [on Gluu's website](https://www.gluu.org/resources/documents/standards/fido-u2f/).
+FIDO Universal 2nd Factor (U2F) is an open authentication standard that strengthens and simplifies two-factor authentication using specialized USB or NFC devices based on similar security technology found in smart cards. 
 
-This document will explain how to use Gluu's [FIDO U2F interception script](https://raw.githubusercontent.com/GluuFederation/oxAuth/master/Server/integrations/u2f/U2fExternalAuthenticator.py) 
+> Learn more about the U2F standard [on Gluu's website](https://www.gluu.org/resources/documents/standards/fido-u2f/).
+
+This document will explain how to use Gluu's [U2F interception script](https://raw.githubusercontent.com/GluuFederation/oxAuth/master/Server/integrations/u2f/U2fExternalAuthenticator.py) 
 to configure the Gluu Server for a two-step authentication process with username and password as the first step, 
-and FIDO U2F as the second step.
+and any U2F device as the second step.
 
-In order to use this authentication mechanism users will need a U2F device. Some well known devices and manufacturers include:           
+Some well known U2F devices and manufacturers include:           
 - [Vasco DIGIPASS SecureClick](https://www.vasco.com/products/two-factor-authenticators/hardware/one-button/digipass-secureclick.html)      
 - [Yubico](https://www.yubico.com/)      
 - [HyperFIDO](http://hyperfido.com/)       
 - [Feitian Technologies](http://www.ftsafe.com/)      
 
-For a comprehensive list of U2F devices, check [FIDO's certified products](https://fidoalliance.org/certification/fido-certified-products/). 
-
-!!! Note
-    Sort by Specification == U2F
+For a comprehensive list of U2F devices, check [FIDO's certified products](https://fidoalliance.org/certification/fido-certified-products/) (Sort by Specification == U2F).
 
 ## Properties
 The script has the following properties
