@@ -11,7 +11,7 @@ Integrating SaaS applications with your Gluu Server is fairly straightforward. P
 Two design patterns have emerged for securing custom developed, open source, and off-the-shelf applications:
 
 1. [Use a web server filter / reverse proxy](#web-server-filter--reverse-proxy); or,
-2. [Call the federation APIs directly](#client-sdks).
+2. [Call the federation APIs directly](#server-side-client-sdks).
 
 In the Web Server and Client SDKs sections of the integration guide we document how to use supported software to implement each approach, respectively. Which approach to pick depends on a trade-off between easier devops (option 1), and how deeply you want to integrate centralized security policies into your application (option 2).
 
