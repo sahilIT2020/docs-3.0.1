@@ -14,23 +14,26 @@ Sections till LDAP installation from oxtrust-eclipse.md
 
 5\. Edit file "C:\Program Files (x86)\symas-openldap\etc\openldap\slapd.conf"
  - Uncommnet next lines:
+```
    include		"etc/openldap/schema/ppolicy.schema"
    include		"etc/openldap/schema/cosine.schema"
    include		"etc/openldap/schema/inetorgperson.schema"
    include		"etc/openldap/schema/eduperson.schema"
-
+```
  - Add next include lines:
+```
    include		"etc/openldap/gluu/gluu.schema"
    include		"etc/openldap/gluu/custom.schema"
-
+```
 
  - Uncomment modules:
+```
    moduleload	ppolicy.la
    moduleload	unique.la
-
-
+```
 
  - Copy from CE file /opt/gluu-server-3.0.1/opt/symas/etc/openldap/slapd.conf sections into "C:\Program Files (x86)\symas-openldap\etc\openldap\slapd.conf":
+```
    #######################################################################
    # Main Database housing all the o=gluu info
    #######################################################################
@@ -38,7 +41,7 @@ Sections till LDAP installation from oxtrust-eclipse.md
    #######################################################################
    # Site database housing o=site information
    #######################################################################
-
+```
    Hint:
    End last section is after line:
    index	gluuStatus
