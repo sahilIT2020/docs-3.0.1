@@ -5,8 +5,7 @@ into the Gluu Server CE and does not require any special package or installation
 
 ##Installation
 
-* Install Gluu Server CE following the [Installation Guide](../installation-guide/index.md) and 
-remember to install `Asimba` while running the setup script.  The setup script prepares the 
+* Install Gluu Server CE following the [Installation Guide](../installation-guide/index.md). The setup script prepares the 
 configuration necessary for SCIM UMA RS endpoints and SCIM UMA RP client 
 and [this template](https://github.com/GluuFederation/community-edition-setup/blob/master/templates/scim.ldif) 
 is used. 
