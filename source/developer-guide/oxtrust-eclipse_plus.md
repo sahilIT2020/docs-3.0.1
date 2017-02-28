@@ -81,7 +81,7 @@ export OPENDJ_JAVA_HOME=/opt/jre; /opt/opendj/bin/ldapsearch -h localhost -p 163
 
 3\. All Gluu applciations store setting in LDAP. Hence we need to update their configuration in LDAP
 
-3.1\. We need to change authentication setting: inum=<appliance_inum>,ou=appliances,o=gluu. We need to remove IDPAuthentication attribute from this entry.
+3.1\. We need to change authentication setting: `inum=<appliance_inum>,ou=appliances,o=gluu`. We need to remove IDPAuthentication attribute from this entry.
 
 3.2\. Fix invalid cache setting JSON format in: inum=<appliance_inum>,ou=appliances,o=gluu. We need to remove do:
   - Replace IN_MEMORY with "IN_MEMORY"
