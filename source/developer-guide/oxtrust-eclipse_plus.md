@@ -70,12 +70,14 @@ Sections till LDAP installation from oxtrust-eclipse.md
 
 ## Import data from CE into dev LDAP
 
-1. Export "o=gluu" tree in CE into gluu.ldif
+1\. Export "o=gluu" tree in CE into gluu.ldif
+```
 export OPENDJ_JAVA_HOME=/opt/jre; /opt/opendj/bin/ldapsearch -h localhost -p 1636  -Z -X -w secret -D "cn=directory manager,o=gluu" -b "o=gluu" objectClass=* > gluu.ldif
+```
 
-2. Load gluu.ldif into dev LDAP and update to conform new environemt
+2\. Load gluu.ldif into dev LDAP and update to conform new environemt
 
-3. All Gluu applciations store setting in LDAP. Hence we need to update their configuration in LDAP
+3\. All Gluu applciations store setting in LDAP. Hence we need to update their configuration in LDAP
 
 3.1 We need to change authentication setting: inum=<appliance_inum>,ou=appliances,o=gluu. We need to remove IDPAuthentication attribute from this entry.
 
