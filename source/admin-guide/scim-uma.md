@@ -10,8 +10,7 @@ configuration necessary for SCIM UMA RS endpoints and SCIM UMA RP client
 and [this template](https://github.com/GluuFederation/community-edition-setup/blob/master/templates/scim.ldif) 
 is used. 
 
-**Note:** The JWKS for RS and RP clients are put into the `./output/scim.ldif` file ready for SCIM configuration.
-The `setup.properties.file` contains the RS and RP JWKS in Base64 format.
+> The JWKS for RS and RP clients are put into the `./output/scim.ldif` file ready for SCIM configuration. The `setup.properties.file` contains the RS and RP JWKS in Base64 format.
 
 * Use the following command to extract OpenID SCIM RS and RP Client ID
 ` cat setup.properties.last | grep "scim_rs_client_id\|scim_rp_client_id"`
