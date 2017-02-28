@@ -8,7 +8,7 @@ Sections till LDAP installation from oxtrust-eclipse.md
 
 2\. Create folder for custom Gluu schema: "C:\Program Files (x86)\symas-openldap\etc\openldap\schema"
 
-3\. Copy into custom Gluu schema folder 2 files from CE /opt/gluu-server-3.0.1/opt/gluu/schema/openldap
+3\. Copy into custom Gluu schema folder 2 files from CE "/opt/gluu-server-3.0.1/opt/gluu/schema/openldap"
 
 4\. Copy "C:\Program Files (x86)\symas-openldap\etc\openldap\slapd.conf.default" into "C:\Program Files (x86)\symas-openldap\etc\openldap\slapd.conf"
 
@@ -108,3 +108,7 @@ export OPENDJ_JAVA_HOME=/opt/jre; /opt/opendj/bin/ldapsearch -h localhost -p 163
 2\. We need to create new Jetty Webapp configuration run oxTrus under Jetty on HTTPS port 8453
 
 3\. Before running both application we new to add VM argument (on Arguments tab): -Dgluu.base=<path_to_folder_with_ox_conf_folder> It should specify path with 'conf' folder which contains 'ox-ldap.properties' and 'salt' files
+
+4\. Start applications in next order: oxAuth, oxTrust
+
+5\. Open in browser: https://localhost:8453/identity
