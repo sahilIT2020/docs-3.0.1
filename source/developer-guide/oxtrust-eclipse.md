@@ -225,7 +225,6 @@ be made in ox-ldap.properties and in everything.ldif before data import (or in d
 Extract these files from the configs.tgz we created earlier: 
 
 - configs/everything.ldif
-- configs/user.schema
 - configs/custom.schema
 - configs/gluu.schema
 
@@ -236,7 +235,7 @@ Now update slapd.conf to resemble the `configs/slapd.conf`
 
 1. Add ppolicy.schema to the include section 
 
-2. Add user.schema, custom.schema and gluu.schema to the include section 
+2. Add custom.schema and gluu.schema to the include section 
 
     ![policyschema](../img/developer/oxtrust/policyschema.png)
 
