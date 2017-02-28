@@ -81,24 +81,28 @@ export OPENDJ_JAVA_HOME=/opt/jre; /opt/opendj/bin/ldapsearch -h localhost -p 163
 
 3\. All Gluu applciations store setting in LDAP. Hence we need to update their configuration in LDAP
 
-3.1 We need to change authentication setting: inum=<appliance_inum>,ou=appliances,o=gluu. We need to remove IDPAuthentication attribute from this entry.
+3.1\. We need to change authentication setting: inum=<appliance_inum>,ou=appliances,o=gluu. We need to remove IDPAuthentication attribute from this entry.
 
-3.2 Fix invalid cache setting JSON format in: inum=<appliance_inum>,ou=appliances,o=gluu. We need to remove do:
+3.2\. Fix invalid cache setting JSON format in: inum=<appliance_inum>,ou=appliances,o=gluu. We need to remove do:
   - Replace IN_MEMORY with "IN_MEMORY"
   - Replace DEFAULT with "DEFAULT"
 
-3.3 We need to change oxAuth settings: ou=oxauth,ou=configuration,inum=<appliance_inum>,ou=appliances,o=gluu. We need to apply next changes to oxAuthConfDynamic attribute value.
+3.3\. We need to change oxAuth settings: ou=oxauth,ou=configuration,inum=<appliance_inum>,ou=appliances,o=gluu. We need to apply next changes to oxAuthConfDynamic attribute value.
   - Replace "https://<ce_host_name>/oxauth" with "https://localhost:8443/oxauth"
   - Replace  "issuer":"https://<ce_host_name>" with "oxAuthIssuer":"https://localhost:8443"
 
-3.4 We need to change oxTrust settings: ou=oxtrust,ou=configuration,inum=<appliance_inum>,ou=appliances,o=gluu. We need to apply next changes to oxTrustConfApplication attribute value.
+3.4\. We need to change oxTrust settings: ou=oxtrust,ou=configuration,inum=<appliance_inum>,ou=appliances,o=gluu. We need to apply next changes to oxTrustConfApplication attribute value.
   - Replace "https://<ce_host_name>/identity" with "https://localhost:8453/identity"
   - Replace "https://<ce_host_name>/oxauth" with "https://localhost:8443/oxauth"
   - Replace  "oxAuthIssuer":"https://<ce_host_name>" with "oxAuthIssuer":"https://localhost:8443/oxauth"
   - Replace  "umaIssuer":"https://<ce_host_name>" with "umaIssuer":"https://localhost:8443/oxauth"
 
-3.5 Fix oxTrust oxAuth client settings: inum=<org_inum>!0008!8CF0.83A5,ou=clients,o=<org_inum>,o=gluu. We need to add next attribute values:
+3.5\. Fix oxTrust oxAuth client settings: inum=<org_inum>!0008!8CF0.83A5,ou=clients,o=<org_inum>,o=gluu. We need to add next attribute values:
   - oxAuthRedirectURI: https://localhost:8453/identity/authentication/authcode
   - oxAuthPostLogoutRedirectURI: https://localhost:8453/identity/authentication/finishlogout
 
 ## Start oxAuth under Jetty in Eclipse
+
+1\. We need to create new Jetty Webapp configuration run oxAuth under Jetty on HTTPS port 8443
+2\. We need to create new Jetty Webapp configuration run oxTrus under Jetty on HTTPS port 8453
+3\. Before running both application we new to add VM argument (on Arguments tab): -Dgluu.base=<path_to_folder_with_ox_conf_folder> It should specify path with 'conf' folder which contains 'ox-ldap.properties' and 'salt' files
