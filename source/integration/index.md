@@ -21,8 +21,7 @@ The most commonly used approach for enterprise SSO has been to use a Web Server 
 ### Server Side Client SDKs
 The other integration option is to call the federation APIs directly in your application. In general, calling the API’s directly will enable the application to make “smarter” decisions, which can have a positive impact on usability and ultimately result in better security. Libraries exist for SAML, OpenID Connect and UMA in many languages. However, due to the complexity associated with properly implementing the APIs, we recommend using one of the supported Client SDKs covered in our documentation to help with the heavy lifting. 
 
-!!! Note
-    Given ongoing maintenance considerations, and the security implications of getting the implementation correct, we **strongly encourage** you to use our commercial OAuth 2.0 client software, [oxd](./oauth2.md/), to secure web applications. 
+> Given ongoing maintenance considerations, and the security implications of getting the implementation correct, we **strongly encourage** you to use our commercial OAuth 2.0 client software, [oxd](./oauth2.md/), to secure web applications. 
         
 ## Mobile Apps    
 To integrate custom developed and open source mobile applications with your Gluu Server access management platform, use the AppAuth OpenID Connect libraries for iOS and Android written by Google.
