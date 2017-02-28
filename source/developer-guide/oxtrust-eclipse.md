@@ -224,7 +224,6 @@ be made in ox-ldap.properties and in everything.ldif before data import (or in d
 ### Configure OpenLDAP
 Extract these files from the configs.tgz we created earlier: 
 
-- configs/slapd.conf
 - configs/everything.ldif
 - configs/user.schema
 - configs/custom.schema
