@@ -1212,20 +1212,19 @@
                 
                 <h1 id="fido-u2f">FIDO U2F<a class="headerlink" href="#fido-u2f" title="Permanent link">#</a></h1>
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">#</a></h2>
-<p>FIDO Universal 2nd Factor (U2F) is an open authentication standard that strengthens and simplifies two-factor authentication using specialized USB or NFC devices based on similar security technology found in smart cards. Learn more about the U2F standard <a href="https://www.gluu.org/resources/documents/standards/fido-u2f/">on Gluu's website</a>.</p>
-<p>This document will explain how to use Gluu's <a href="https://raw.githubusercontent.com/GluuFederation/oxAuth/master/Server/integrations/u2f/U2fExternalAuthenticator.py">FIDO U2F interception script</a> 
+<p>FIDO Universal 2nd Factor (U2F) is an open authentication standard that strengthens and simplifies two-factor authentication using specialized USB or NFC devices based on similar security technology found in smart cards. </p>
+<blockquote>
+<p>Learn more about the U2F standard <a href="https://www.gluu.org/resources/documents/standards/fido-u2f/">on Gluu's website</a>.</p>
+</blockquote>
+<p>This document will explain how to use Gluu's <a href="https://raw.githubusercontent.com/GluuFederation/oxAuth/master/Server/integrations/u2f/U2fExternalAuthenticator.py">U2F interception script</a> 
 to configure the Gluu Server for a two-step authentication process with username and password as the first step, 
-and FIDO U2F as the second step.</p>
-<p>In order to use this authentication mechanism users will need a U2F device. Some well known devices and manufacturers include:         <br />
+and any U2F device as the second step.</p>
+<p>Some well known U2F devices and manufacturers include:         <br />
 - <a href="https://www.vasco.com/products/two-factor-authenticators/hardware/one-button/digipass-secureclick.html">Vasco DIGIPASS SecureClick</a>    <br />
 - <a href="https://www.yubico.com/">Yubico</a>    <br />
 - <a href="http://hyperfido.com/">HyperFIDO</a>     <br />
 - <a href="http://www.ftsafe.com/">Feitian Technologies</a>      </p>
-<p>For a comprehensive list of U2F devices, check <a href="https://fidoalliance.org/certification/fido-certified-products/">FIDO's certified products</a>. </p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Sort by Specification == U2F</p>
-</div>
+<p>Check <a href="https://fidoalliance.org/certification/fido-certified-products/">FIDO's certified products</a> for a comprehensive list of U2F devices (sort by <code>Specification</code> == <code>U2F</code>).</p>
 <h2 id="properties">Properties<a class="headerlink" href="#properties" title="Permanent link">#</a></h2>
 <p>The script has the following properties</p>
 <table>
