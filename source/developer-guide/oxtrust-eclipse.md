@@ -210,17 +210,6 @@ From the configs.tgz you downloaded earlier extract these files:
 
 into the conf subdirectory you created (e.g. C:\home\gluu\conf\ox-ldap.properties) 
 
-## Install OpenLDAP
-We use this distribution of [OpenLdap]()http://www.userbooster.de/en/download/openldap-for-windows.aspx) for windows in this document: 
-
-Any other build should work as well though. 
-
-During the installation the only change required is to update ports to 1389 and 1636. 
-If ports are changed to some other values - corresponding changes should 
-be made in ox-ldap.properties and in everything.ldif before data import (or in database after import) 
-
-   ![install](../img/developer/oxtrust/instalopenldap.png)
-
 ### Install and configure Symas OpenLDAP
 
 1\. Download Silver Edition from: https://downloads.symas.com/SDLPWeb
