@@ -1,8 +1,7 @@
 # Overview
-Gluu Server supports only UMA protection for SCIM endpoints from version 2.4.0 onwards. 
-A machine based authorization method is used to obtain the access tokens. SCIM/UMA is built
-into the Gluu Server CE and does not require any special package or installation. Please checkout 
-[Installation Guide](../installation-guide/index.md) for installation instructions.
+The Gluu Server supports UMA protection for SCIM endpoints from Gluu Server CE 2.4.0 and onward. 
+A machine based authorization method is used to obtain access tokens. SCIM/UMA is built
+into the Gluu Server CE and does not require any special package or installation. 
 
 ##Installation
 
