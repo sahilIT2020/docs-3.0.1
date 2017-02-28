@@ -65,7 +65,7 @@ Now we need to collect critical configuration files and test data need for devel
 
 # cp /etc/gluu/conf/salt /root/configs/ 
 
-# cp /opt/gluu/*.schema /root/configs/ 
+# cp /opt/gluu/schema/openldap/*.schema /root/configs/
 
 # tar -czf /root/configs.tgz /root/configs 
 ```
