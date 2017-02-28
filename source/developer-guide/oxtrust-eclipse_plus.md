@@ -62,9 +62,11 @@ Sections till LDAP installation from oxtrust-eclipse.md
   - "C:\Program Files (x86)\symas-openldap\etc\openldap\DB_CONFIG.default" into "C:\Program Files (x86)\symas-openldap\var\openldap-data\site_db\DB_CONFIG"
 
 8\. Verify OpenLDAP settings:
-   > slaptest.bat -f "C:\Program Files (x86)\symas-openldap\etc\openldap\slapd.conf"
-   > ...
-   > config file testing succeeded
+```
+   slaptest.bat -f "C:\Program Files (x86)\symas-openldap\etc\openldap\slapd.conf"
+   ...
+   config file testing succeeded
+```
 
 9\. Now we can try to run OpenLDAP service and connect to LDAP server localhost:389
 
