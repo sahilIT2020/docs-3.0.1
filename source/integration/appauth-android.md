@@ -59,7 +59,7 @@ Authorization services can be added to the demo app by defining instances of
 
 2. If the service supports OpenID Connect, `myprovider_discovery_uri` would be defined 
 in `idp_configs_optional.xml` and set to the discovery URI for the 
-service (e.g. https://www.myprovider.com/.well-known/openid-configuration).
+service (e.g. `https://www.myprovider.com/.well-known/openid-configuration`).
     
     Otherwise, `myprovider_auth_endpoint_uri` and `myprovider_token_endpoint_uri` 
     would be defined in `idp_configs_optional.xml` and set to the authorization and token
