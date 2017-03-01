@@ -271,7 +271,7 @@ into the conf subdirectory you created (e.g. C:\home\gluu\conf\ox-ldap.propertie
 
 8\. Verify OpenLDAP settings:
 ```
-   slaptest.bat -f `C:\Program Files (x86)\symas-openldap\etc\openldap\slapd.conf`
+   slaptest.bat -u -f `C:\Program Files (x86)\symas-openldap\etc\openldap\slapd.conf`
    ...
    config file testing succeeded
 ```
