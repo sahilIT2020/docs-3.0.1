@@ -76,7 +76,8 @@ the build.gradle file of the project.
 4. Click **OK** and it will start building project. 
    
 Another way if you don't want to download source code manually and want 
-to clone repository then follow below steps:    
+to clone repository then follow below steps:   
+ 
 1. Open Android Studio, Go to File -> New -> Project from Version Control 
 -> Git.
 ![clone_repo_init](../img/app-auth/clone_repo_init.png)
@@ -89,8 +90,7 @@ click **Clone**.
    project in your computer
     
    Directory Name:  Project Name
-![clone_repo_details](../img/app-auth/clone_repo_details.png)
-   
+![clone_repo_details](../img/app-auth/clone_repo_details.png)   
 3. It will Clone repository into the folder you mentioned 
 in **Parent Directory** above and start building the project.  
    
