@@ -73,16 +73,15 @@ prompt to select existing project from your computer.
 3. Browse the folder where you extracted source code file and select 
 the build.gradle file of the project.
 ![import_project](../img/app-auth/import_project.png)
-4. Click `OK` and it will start building project. 
+4. Click **OK** and it will start building project. 
    
 Another way if you don't want to download source code manually and want 
 to clone repository then follow below steps:    
 1. Open Android Studio, Go to File -> New -> Project from Version Control 
 -> Git.
 ![clone_repo_init](../img/app-auth/clone_repo_init.png)
-
 2. It will prompt in which you need to provide following details and then 
-click `Clone`.
+click **Clone**.
  
    Git Repository URL: Repository URL which you want to clone
    
@@ -93,7 +92,7 @@ click `Clone`.
 ![clone_repo_details](../img/app-auth/clone_repo_details.png)
    
 3. It will Clone repository into the folder you mentioned 
-in `Parent Directory` above and start building the project.  
+in **Parent Directory** above and start building the project.  
    
 If you get an error like: Error:Could not find 
 com.android.support:customtabs:23.2.0. then be sure you have installed 
@@ -102,6 +101,7 @@ Android Studio prompts to resolve the dependencies automatically.
 
 Once the project build successfully, you can see that there are two 
 modules in the project.
+
 1. app(Demo app which use AppAuth library)
 2. library(AppAuth library project)
 
