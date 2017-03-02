@@ -50,7 +50,7 @@ pages:
 - Integration Guide:
         - 'Introduction': 'integration/index.md'
         - 'Client SDKs':
-            - 'oxd OAuth2': 'gluu.org/docs/oxd/'
+            - 'oxd OAuth2': 'integration/oauth2.md'
             - 'OAuth2.0 js Implicit Flow': 'integration/oauth-js-implicit.md'
         - 'Web Server Integrations':
             - 'Shibboleth SP': 'integration/saml-sp.md'
