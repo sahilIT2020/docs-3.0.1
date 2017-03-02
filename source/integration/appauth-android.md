@@ -1,85 +1,168 @@
 # AppAuth Android
 
 ## Overview
-AppAuth for Android is a client SDK for communicating with OAuth 2.0 and OpenID Connect providers. It strives to directly map the requests and responses of those specifications, while following the idiomatic style of the implementation language. In addition to mapping the raw protocol flows, convenience methods are available to assist with common tasks like performing an action with fresh tokens.
+AppAuth for Android is a client SDK for communicating with [OAuth 2.0]
+(https://tools.ietf.org/html/rfc6749) and [OpenID Connect]
+(http://openid.net/specs/openid-connect-core-1_0.html) providers. It 
+strives to directly map the requests and responses of those specifications, 
+while following the idiomatic style of the implementation language. In 
+addition to mapping the raw protocol flows, convenience methods are 
+available to assist with common tasks like performing an action with 
+fresh tokens.
 
-## Main workflow diagram
+The library follows the best practices set out in [OAuth 2.0 for Native Apps]
+(https://tools.ietf.org/html/draft-ietf-oauth-native-apps)
+including using
+[Custom Tabs](http://developer.android.com/tools/support-library/features.html#custom-tabs)
+for the auth request. For this reason,
+`WebView` is explicitly *not* supported due to usability and security 
+reasons.
 
-![flowDiagram](../img/app-auth/flowDiagram.png)
+The library also supports the [PKCE](https://tools.ietf.org/html/rfc7636)
+extension to OAuth which was created to secure authorization codes in 
+public clients when custom URI scheme redirects are used. The library is 
+friendly to other extensions (standard or otherwise) with the ability to 
+handle additional parameters in all protocol requests and responses.
 
 ## Download
-You can download (or clone) project from our [Github Repo](https://github.com/GluuFederation/AppAuth-Android)
+You can download (or clone) project from [Github Repo](https://github.com/openid/AppAuth-Android)
 
 ## Specification
 ### Supported Android Versions
 AppAuth supports Android API 16 (Jellybean) and above.
 
-When a Custom Tabs implementation is provided by a browser on the device (for example 
-by [Chrome](https://developer.chrome.com/multidevice/android/customtabs)), Custom Tabs 
-are used for authorization requests. Otherwise, the default browser is used as a fallback.
+When a Custom Tabs implementation is provided by a browser on 
+the device (for example by [Chrome](https://developer.chrome.com/multidevice/android/customtabs)), 
+Custom Tabs are used for authorization requests. Otherwise, 
+the default browser is used as a fallback.
+
+### Authorization Server Support
+
+Both Custom URI Schemes (all supported versions of Android) and App Links
+(API 23+) can be used with the library.
+
+In general, AppAuth can work with any Authorization Server (AS) that supports
+[native apps](https://tools.ietf.org/html/draft-ietf-oauth-native-apps),
+either through custom URI scheme redirects, or App Links.
+AS's that assume all clients are web-based or require clients to maintain
+confidentiality of the client secrets may not work well.
 
 ## Building the Project
 ### Prerequisites
-The project requires the Android SDK for API level 23 (Marshmallow) to build, though 
-the produced binaries only require API level 16 (Jellybean) to be used.
+The project requires the Android SDK for API level 23 
+(Marshmallow) to build, though the produced binaries only 
+require API level 16 (Jellybean) to be used.
 
 ### Building from Android Studio
-In AndroidStudio, File -> New -> Import project. Select the root folder (the one with 
-the build.gradle file).
 
-If you get an error like: Error:Could not find com.android.support:customtabs:23.2.0. 
-then be sure you have installed the Android Support Library from the Android SDK Manager.
- Follow the Android Studio prompts to resolve the dependencies automatically.
+Android Studio is an official IDE for Android.
 
-## Requirements
-To use AppAuth we need three parameters: issuer, clientId and redirectUri:
+You can find Android Studio, it's features, docs, user guide etc. 
+from [this site](https://developer.android.com/studio/index.html).
+
+There are two ways to build existing project either download source code zip 
+file or clone repository.
+ 
+If you have downloaded source code zip file then follow below steps to 
+import project in Android Studio:
+
+1. Extract the source code zip file in your desired folder in your 
+computer's file system.
+2. Open Android Studio, Go to File -> New -> Import project. It will 
+prompt to select existing project from your computer.
+3. Browse the folder where you extracted source code file and select 
+the build.gradle file of the project.
+![import_project](../img/app-auth/import_project.png)
+4. Click `OK` and it will start building project. 
+   
+Another way if you don't want to download source code manually and want 
+to clone repository then follow below steps:    
+1. Open Android Studio, Go to File -> New -> Project from Version Control 
+-> Git.
+![clone_repo_init](../img/app-auth/clone_repo_init.png)
+
+2. It will prompt in which you need to provide following details and then 
+click `Clone`.
+ 
+   Git Repository URL: Repository URL which you want to clone
+   
+   Parent Directory: Folder location in which you want to store 
+   project in your computer
+    
+   Directory Name:  Project Name
+![clone_repo_details](../img/app-auth/clone_repo_details.png)
+   
+3. It will Clone repository into the folder you mentioned 
+in `Parent Directory` above and start building the project.  
+   
+If you get an error like: Error:Could not find 
+com.android.support:customtabs:23.2.0. then be sure you have installed 
+the Android Support Library from the Android SDK Manager. Follow the 
+Android Studio prompts to resolve the dependencies automatically.   
+
+Once the project build successfully, you can see that there are two 
+modules in the project.
+1. app(Demo app which use AppAuth library)
+2. library(AppAuth library project)
+
+## Configure the Client
+
+You can manually create a client in oxTrust or can dynamically register
+(Which is explained under "Dynamic Client Registration" in this doc).
+
+To use AppAuth we need three parameters: issuer, clientId and 
+redirectUri:
 
 - issuer - from which the configuration will be discovered
 - clientId - from dynamic client registration response
 - redirectUri - this scheme must be registered as a scheme in the project's manifest file
 
-## Dynamic Client Registration
-You need to perform dynamic client registration to authorization server by providing 
-following values in "Dynamic Client Registration" form:
+In order to configure client manually in oxTrust, you need to provide 
+following values:
 - Registration Endpoint: YOUR_REGISTRATION_ENDPOINT
 - Redirect URIs (space-separated): YOUR_REDIRECT_URI
 - Response Types: CODE
 - Grant Types: AUTHORIZATION_CODE
 - Application Type: NATIVE
 
-After successfull registration, it will return client id which will use for Authorization.
+After successful registration, it will return client id which 
+will use for Authorization.
 
 ## Configure the Demo App
-Authorization services can be added to the demo app by defining instances of
- `IdentityProvider`. Assuming a service named `myprovider`, the following steps need 
- to be taken:
+Authorization services can be added to the demo app by defining
+instances of `IdentityProvider`. Assuming a service named 
+`myprovider`, the following steps need to be taken:
  
-1. The name of the service should be defined in `myprovider_name` in 
-`idp_configs_optional.xml`.
+1. The name of the service should be defined in `myprovider_name` 
+in `idp_configs_optional.xml`.
 
-2. If the service supports OpenID Connect, `myprovider_discovery_uri` would be defined 
-in `idp_configs_optional.xml` and set to the discovery URI for the 
+2. If the service supports OpenID Connect, 
+`myprovider_discovery_uri` would be defined in 
+`idp_configs_optional.xml` and set to the discovery URI for the 
 service (e.g. `https://www.myprovider.com/.well-known/openid-configuration`).
     
-    Otherwise, `myprovider_auth_endpoint_uri` and `myprovider_token_endpoint_uri` 
-    would be defined in `idp_configs_optional.xml` and set to the authorization and token
-     endpoint URIs respectively. 
+    Otherwise, `myprovider_auth_endpoint_uri` and 
+    `myprovider_token_endpoint_uri` would be defined in 
+    `idp_configs_optional.xml` and set to the authorization and 
+    token endpoint URIs respectively. 
 
-3. The default scope string, `myprovider_scope_string`, should be defined in 
-`idp_configs_optional.xml`.
+3. The default scope string, `myprovider_scope_string`, should be 
+defined in `idp_configs_optional.xml`.
 
-4. A placeholder for the client ID, `myprovider_client_id`, should be defined in 
+4. A placeholder for the client ID, `myprovider_client_id`, should 
+be defined in `idp_configs.xml`.
+
+5. The redirect URI, `myprovider_redirect_uri`, can be defined in 
 `idp_configs.xml`.
 
-5. The redirect URI, `myprovider_redirect_uri`, can be defined in `idp_configs.xml`.
+6. An on-off toggle, `myprovider_enabled`, should be defined in 
+`idp_configs.xml` and set to false by default.
 
-6. An on-off toggle, `myprovider_enabled`, should be defined in `idp_configs.xml` and 
-set to false by default.
+7. Button resources representing the IDP should be imported into 
+the relevant directories under res.
 
-7. Button resources representing the IDP should be imported into the relevant directories
- under res.
-
-This may result in an addition to `idp_configs.xml` that looks like
+This may result in an addition to `idp_configs.xml` that looks 
+like
 
 ```
 <bool name="myprovider_enabled">true</bool>
@@ -97,8 +180,8 @@ And an addition to `idp_configs_optional.xml` that looks like:
 <string name="myprovider_discovery_uri">https://www.myprovider.com/.well-known/openid-configuration</string>
 ```
 
-With these properties defined, a new instance of IdentityProvider can be 
-defined in `IdentityProvider`:
+With these properties defined, a new instance of IdentityProvider 
+can be defined in `IdentityProvider`:
 
 ```
 public static final IdentityProvider MYPROVIDER = new IdentityProvider(
@@ -124,8 +207,8 @@ public static final List<IdentityProvider> PROVIDERS = Arrays.asList(MYPROVIDER)
 ```
 
 Finally you need to add a new intent-filter to the 
-`net.openid.appauth.RedirectUriReceiverActivity` activity section of the 
-`AndroidManifest.xml`
+`net.openid.appauth.RedirectUriReceiverActivity` activity section 
+of the `AndroidManifest.xml`
 
 ```
 <!-- Callback from authentication screen -->
@@ -141,23 +224,26 @@ Finally you need to add a new intent-filter to the
 </activity>
 ```
 
-Make sure you've set `myauth_enabled` to true in the config, and your new IdP
-should show up in the list.
+Make sure you've set `myauth_enabled` to true in the config, 
+and your new IdP should show up in the list.
 
 ## Auth Flow
 
-AppAuth supports both manual interaction with the Authorization Server where you 
-need to perform your own token exchanges, as well as convenience methods that perform 
-some of this logic for you. This example uses the convenience method which returns 
+AppAuth supports both manual interaction with the Authorization 
+Server where you need to perform your own token exchanges, as well
+as convenience methods that perform some of this logic for you. 
+This example uses the convenience method which returns 
 either an `AuthState` object, or an error.
 
 ### Tracking authorization state
 
-`AuthState` is a class that keeps track of the authorization and token requests and 
-responses, and provides a convenience method to call an API with fresh tokens. This is 
-the only object that you need to serialize to retain the authorization state of 
-the session.Typically, one would do this by storing the authorization state in 
-SharedPreferences or some other persistent store private to the app:
+`AuthState` is a class that keeps track of the authorization and 
+token requests and responses, and provides a convenience method to
+call an API with fresh tokens. This is the only object that you 
+need to serialize to retain the authorization state of the 
+session.Typically, one would do this by storing the authorization 
+state in SharedPreferences or some other persistent store private 
+to the app:
 
 ```java
 @NonNull public AuthState readAuthState() {
@@ -181,8 +267,8 @@ public void writeAuthState(@NonNull AuthState state) {
 
 ### Configuration
 
-You can configure communication with your chosen authorization server by
-specifying the endpoints directly:
+You can configure communication with your chosen authorization 
+server by specifying the endpoints directly:
 
 ```java
 AuthorizationServiceConfiguration config =
@@ -212,10 +298,11 @@ AuthorizationServiceConfiguration.fetchFromIssuer(
   });
 ```
 
-Additionally, AppAuth provides additional client configuration, in order to
-control the browsers that can be used for the authorization flow, or to
-control the HttpURLConnection implementation that is used for token
-exchange. This can be done by creating an `AppAuthConfiguration` object:
+Additionally, AppAuth provides additional client configuration, 
+in order to control the browsers that can be used for the 
+authorization flow, or to control the HttpURLConnection 
+implementation that is used for token exchange. This can be done 
+by creating an `AppAuthConfiguration` object:
 
 ```java
 AppAuthConfiguration appAuthConfig = new AppAuthConfiguration.Builder()
@@ -236,22 +323,58 @@ AppAuthConfiguration appAuthConfig = new AppAuthConfiguration.Builder()
     .build();
 ```
 
-This configuration will only permit Chrome or Samsung Browser to be used as
-a custom tab for authorization flows, and changes the SSL socket factory to
-a hypothetical custom version `MySocketFactory`. The modification of the
-socket factory is useful for certificate pinning, or adding some additional
+This configuration will only permit Chrome or Samsung Browser to 
+be used as a custom tab for authorization flows, and changes the 
+SSL socket factory to a hypothetical custom version 
+`MySocketFactory`. The modification of the socket factory is 
+useful for certificate pinning, or adding some additional
 certificates to the trusted set (such as for testing).
 
-This configuration is provided to `AuthorizationService` upon construction:
+This configuration is provided to `AuthorizationService` upon 
+construction:
 
 ```java
 new AuthorizationService(context, appAuthConfig);
 ```
 
+### Dynamic client registration(Optional)
+
+If the server supports dynamic client registration, a new registration
+request can be constructed for dispatch:
+
+```java
+RegistrationRequest registrationRequest = new RegistrationRequest.Builder(
+    serviceConfig,
+    Arrays.asList(redirectUri))
+    .build();
+```
+
+Requests are dispatched with the help of `AuthorizationService`. As this
+request is asynchronous the response is passed to a callback:
+
+```java
+service.performRegistrationRequest(
+    registrationRequest,
+    new AuthorizationService.RegistrationResponseCallback() {
+        @Override public void onRegistrationRequestCompleted(
+            @Nullable RegistrationResponse resp,
+            @Nullable AuthorizationException ex) {
+            if (resp != null) {
+                // registration succeeded, store the registration response
+                AuthState state = new AuthState(resp);
+                //proceed to authorization...
+            } else {
+              // registration failed, check ex for more details
+            }
+         }
+    });
+```
+
 ### Authorizing
 
-After configuring or retrieving an authorization service configuration,
-an authorization request can be constructed for dispatch:
+After configuring or retrieving an authorization service 
+configuration, an authorization request can be constructed for 
+dispatch:
 
 ```java
 AuthorizationRequest req = new AuthorizationRequest.Builder(
@@ -262,10 +385,10 @@ AuthorizationRequest req = new AuthorizationRequest.Builder(
     .build();
 ```
 
-Requests are dispatched with the help of `AuthorizationService`. As this
-will open a custom tab or browser instance to fulfill this request.
-An intent can be specified for both completion and cancelation of the
-authorization flow:
+Requests are dispatched with the help of `AuthorizationService`. 
+As this will open a custom tab or browser instance to fulfill 
+this request. An intent can be specified for both completion and 
+cancelation of the authorization flow:
 
 ```java
 AuthorizationService service = new AuthorizationService(context);
@@ -278,9 +401,10 @@ service.performAuthorizationRequest(
 ```
 
 ### Handling the Redirect
-We are using a custom scheme to send the OAuth redirect back to app. The library 
-configures the `RedirectUriReceiverActivity` to handle a custom scheme and need to declare 
-this activity into your `AndroidManifest.xml` file by adding following:
+We are using a custom scheme to send the OAuth redirect back to 
+app. The library configures the `RedirectUriReceiverActivity` to 
+handle a custom scheme and need to declare this activity into 
+your `AndroidManifest.xml` file by adding following:
 
 ```xml
     <activity android:name="net.openid.appauth.RedirectUriReceiverActivity">
@@ -294,12 +418,12 @@ this activity into your `AndroidManifest.xml` file by adding following:
     </activity>
 ```
 
-After completing authorization in custom tab, above custom scheme will redirect back 
-to app.
+After completing authorization in custom tab, above custom scheme 
+will redirect back to app.
 
-When the response is captured by `RedirectUriReceiverActivity`, it is ultimately 
-forwarded to the activity specified in your completion intent, and can be extracted 
-from the intent data:
+When the response is captured by `RedirectUriReceiverActivity`, 
+it is ultimately forwarded to the activity specified in your 
+completion intent, and can be extracted from the intent data:
 
 ```java
 public void onCreate(Bundle b) {
@@ -325,8 +449,8 @@ public void onCreate(Bundle b) {
 }
 ```
 
-Given the auth response, a token request can be created to exchange the 
-authorization code:
+Given the auth response, a token request can be created to 
+exchange the authorization code:
 
 ```java
 service.performTokenRequest(
@@ -343,13 +467,13 @@ service.performTokenRequest(
     });
 ```
 
-If a confidential client is created through dynamic registration, and
-the server expects the client to authenticate at the token endpoint,
-the necessary client authentication must be supplied in the token
-request. This can be simplified by making sure to store the registration
-response in the `AuthState` instance, then
-`AuthState::getClientAuthentication` can construct the necessary client
-authentication:
+If a confidential client is created through dynamic registration, 
+and the server expects the client to authenticate at the token 
+endpoint, the necessary client authentication must be supplied 
+in the token request. This can be simplified by making sure to 
+store the registration response in the `AuthState` instance, 
+then `AuthState::getClientAuthentication` can construct the 
+necessary client authentication:
 
 ```java
 service.performTokenRequest(
@@ -368,8 +492,9 @@ service.performTokenRequest(
 ```
 ### Making API Calls
 
-With an updated AuthState based on the token exchange, it is then possible to
-make requests using guaranteed fresh tokens at any future point:
+With an updated AuthState based on the token exchange, it is then 
+possible to make requests using guaranteed fresh tokens at any 
+future point:
 
 ```java
 AuthState state = readAuthState();
