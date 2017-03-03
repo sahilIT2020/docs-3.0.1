@@ -139,7 +139,7 @@ It is not unlikely that you will lock yourself out of Gluu Server while testing 
 
 1. Run the following command to collect the `inum` for the Gluu Server installation.
 
-`/opt/opendj/bin/ldapsearch -h localhost -p 1389 -D "cn=directory 
+`/opt/opendj/bin/ldapsearch -h localhost -p 1636 -Z -X -D "cn=directory 
 manager" -j ~/.pw -b "ou=appliances,o=gluu" -s one "objectclass=*" 
 oxAuthenticationMode`
 
