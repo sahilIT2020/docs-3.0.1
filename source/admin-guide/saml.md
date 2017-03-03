@@ -69,7 +69,7 @@ successful user authentication.
 
 ### SAML Attributes
 
-### Attrubute in oxTrust
+#### Attributes in oxTrust
 An *Active* attribute list can be seen from the Configuration > Attributes section.
 
 ![Attribute Menu](../img/admin-guide/attribute/admin_attribute_menu.png)
@@ -86,6 +86,8 @@ status to active/inactive, to an attribute after clicking on it.
 
 ![Attributes](../img/admin-guide/attribute/admin_attribute_attribute.png)
 
+
+#### Custom Attributes
 Additional custom attributes can be added in below way
 
  - Add custom attribute to /opt/gluu/schema/openldap/custom.schema 
@@ -149,13 +151,13 @@ appear:
 * _Status:_ The status, when selected active, will release and publish
   the attribute in IdP.
 
-### Custom NameID
+#### Custom NameID
 Gluu Server comes with the `transientID` attribute which is the default `NameID`.
 If there are other `NameID` requirements, it is possible to create them as well.
 The custom attribute must be created in oxTrust first before defining it as the `NameID`.
-Please see the [oxTrust custom attribute guide](#using-oxtrust) to create the custom attribute in oxTrust.
+Please see the [custom attributes](#custom-attributes) section above to learn how to create custom attributes in oxTrust.
 
-### Defining NameID
+#### Defining NameID
   The template file for `NameID` definitions are located in the `attribute-resolver.xml.vm` file under `/opt/gluu/jetty/identity/conf/shibboleth3/idp/`.
   The example below adds `testcustomattribute` as `NameID` based on UID attribute. The following are put into the `attribute-resolver.xml.vm` file.
 
