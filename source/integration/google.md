@@ -1,6 +1,6 @@
 # SSO with Google Apps
 
-Google Apps supports SAML. This document will explain how to configure Google Apps and the Gluu Server for SAML single sign-on (SSO).
+Google Apps supports SAML. This document will explain how to configure Google Apps and the Gluu Server for single sign-on (SSO).
 
 !!! Note
     It is highly recommended to use Google staging apps setup before
