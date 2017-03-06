@@ -1,17 +1,12 @@
-# Using SAML To Get SSO With Google Apps
+# SSO with Google Apps
 
-Google Apps will work as a Service Provider (SP) and we need to
-"introduce" Gluu Server with Google Apps as Gluu Server so that it can
-work as an Identity Provider (IDP).
+Google Apps supports SAML. This document will explain how to configure Google Apps to use the Gluu Server for single sign-on (SSO).
 
-NOTE: It is highly recommended to use Google staging apps setup before
-Google production migration. If you have any question or confusion,
-please feel free to let us know.
+!!! Note
+    It is highly recommended to use Google staging apps setup before
+Google production migration. 
 
-We need to configure Google Apps and Gluu Server so that both parties
-can talk to each other.
-
-## Configuring Google Apps With Google Dashboard:
+## Configuring Google Apps
 
 * Login to dashboard.
 
@@ -55,7 +50,7 @@ options.
 If you want to know more about Google SSO,
 [this](https://support.google.com/a/answer/60224?hl=en) helps you.
 
-## Configuration In Gluu Server:
+## Configuring the Gluu Server
 
 Now we need to create a Trust Relationship in Gluu Server. Trust
 Relationships are created so that the IdP can authorize/authenticate the
