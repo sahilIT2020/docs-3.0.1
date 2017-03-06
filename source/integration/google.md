@@ -3,9 +3,8 @@
 Google Apps supports SAML. This document will explain how to configure Google Apps and the Gluu Server for single sign-on (SSO).
 
 !!! Note
-    It is highly recommended to use Google staging apps setup before
-Google production migration. 
-
+    It is highly recommended to use Google's staging apps environment before migrating to production.
+    
 ## Configuring Google Apps
 
 * Login to dashboard.
