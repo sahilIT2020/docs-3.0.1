@@ -90,6 +90,7 @@ status to active/inactive, to an attribute after clicking on it.
 #### Custom Attributes
 Additional custom attributes can be added in below way
 
+ - Become user 'ldap' 
  - Add custom attribute to /opt/gluu/schema/openldap/custom.schema 
    - In this below example 'customTest' is our custom attribute : 
 ```
@@ -101,9 +102,15 @@ attributetype ( oxAttribute:1003 NAME 'customTest'
  - Add custom attribute to gluuCustomPerson objectClass
    - Example: 
 ```
-objectclass ( oxObjectClass:101 NAME 'gluuCustomPerson' SUP top AUXILIARY MAY (customTest) X-ORIGIN 'Gluu - Custom person objectclass' )
+objectclass ( 1.3.6.1.4.1.48710.1.4.101 NAME 'gluuCustomPerson'
+        SUP ( top )
+        AUXILIARY
+        MAY ( telephoneNumber $ mobile $ customTest )
+        X-ORIGIN 'Gluu - Custom persom objectclass' )
+
 
 ```
+ - Become user 'root'
  - Stop LDAP server with command `service solserver stop`
  - Test custom configuration with `/opt/symas/bin/slaptest -f /opt/symas/etc/openldap/slapd.conf`
  - Start LDAP server with command `service solserver start`
