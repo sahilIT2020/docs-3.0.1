@@ -107,8 +107,6 @@ objectclass ( 1.3.6.1.4.1.48710.1.4.101 NAME 'gluuCustomPerson'
         AUXILIARY
         MAY ( telephoneNumber $ mobile $ customTest )
         X-ORIGIN 'Gluu - Custom persom objectclass' )
-
-
 ```
  - Become user 'root'
  - Stop LDAP server with command `service solserver stop`
